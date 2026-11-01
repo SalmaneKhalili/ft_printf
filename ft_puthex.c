@@ -6,13 +6,13 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 11:05:48 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/01 11:54:01 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/01 14:28:51 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(int n)
+int	ft_puthex(unsigned long n, int f)
 {
 	char	*str;
 	int		i;
@@ -21,7 +21,10 @@ int	ft_puthex(int n)
 
 	if (n == 0)
 		return (ft_putchar('0'));
-	str = "0123456789abcdef";
+	if (f)
+		str = "0123456789abcdef";
+	else
+		str = "0123456789ABCDEF";
 	i = 0;
 	while (n != 0)
 	{
@@ -35,13 +38,4 @@ int	ft_puthex(int n)
 		ft_putchar(arr[i]);
 	}
 	return (count);
-}
-
-int	main(void)
-{
-	ft_puthex(0);
-	ft_putchar('\n');
-	ft_puthex(16);
-	ft_putchar('\n');
-	ft_puthex(2131564);
 }

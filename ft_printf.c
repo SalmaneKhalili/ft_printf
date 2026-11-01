@@ -6,7 +6,7 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 09:43:11 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/01 10:51:02 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/01 14:53:00 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_handle_type(char c, va_list *p)
 	else if (c == 's')
 		count = ft_putstr(va_arg(*p, char *));
 	else if (c == 'p')
-		count = ft_puthex(va_arg(*p, void *));
+		count = ft_putptr(va_arg(*p, void *));
 	else if (c == 'd')
 		count = ft_putnbr(va_arg(*p, int));
 	else if (c == 'i')
@@ -31,9 +31,9 @@ int	ft_handle_type(char c, va_list *p)
 	else if (c == 'u')
 		count = ft_putnbr(va_arg(*p, unsigned int));
 	else if (c == 'x')
-		count = ft_puthex(va_arg(*p, int));
+		count = ft_puthex(va_arg(*p, unsigned int), 1);
 	else if (c == 'X')
-		count = ft_puthex_upper(va_arg(*p, int));
+		count = ft_puthex(va_arg(*p, unsigned int), 0);
 	else if (c == '%')
 		count = ft_putchar('%');
 	return (count);
@@ -62,11 +62,4 @@ int	ft_printf(char const *input, ...)
 	}
 	va_end(args);
 	return (n);
-}
-
-int	main(void)
-{
-	int	x;
-
-	x = ft_printf("Hello %s\n", "salmane");
 }
