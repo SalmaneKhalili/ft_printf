@@ -25,3 +25,35 @@ Support must be provided for the following:
 - %X Prints a number in hexadecimal (base 16) uppercase format.
 - %% Prints a percent sign.
 ```
+
+## Instructions
+### Make
+Run to generate the archived library that includes the ft_printf function and its dependencies.  
+```bash
+make all
+```
+Run the following to remove all artifacts / object files.
+```bash
+make clean
+```
+Run the following to remove the archive file alongside the artifacts
+
+```bash
+make fclean
+```
+For a quick fclean all, run the re rule.
+```bash
+make re
+```
+###  Compilation
+To compile a C file with the library, make sure to include the header file within the source code that calls it.
+```c
+#include "libft.h"
+```
+as for the compilation itself, you can simply pass the library name to your compiler of choice as an argument.
+```bash
+cc main.c libftprintf.a -o main
+```
+## Resources
+
+[The Application Binary Interface is what i used to figure out the mechanism behind variadic functions](https://refspecs.linuxfoundation.org/elf/x86_64-SysV-psABI.pdf)

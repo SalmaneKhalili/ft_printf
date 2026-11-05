@@ -6,14 +6,27 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 09:43:11 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/01 14:53:00 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/05 16:54:43 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdarg.h>
 
-int	ft_handle_type(char c, va_list *p)
+static int	ft_put_invalid(char c)
+{
+	int	v;
+
+	v = ft_putchar('%');
+	if (v == -1)
+		return (-1);
+	v = ft_putchar(c);
+	if (v == -1)
+		return (-1);
+	return (2);
+}
+
+static int	ft_handle_type(char c, va_list *p)
 {
 	int	count;
 
@@ -36,7 +49,15 @@ int	ft_handle_type(char c, va_list *p)
 		count = ft_puthex(va_arg(*p, unsigned int), 0);
 	else if (c == '%')
 		count = ft_putchar('%');
+	else
+		count = ft_put_invalid(c);
 	return (count);
+}
+
+static int	ft_end_printf(va_list *args, int c)
+{
+	va_end(*args);
+	return (c);
 }
 
 int	ft_printf(char const *input, ...)
@@ -44,6 +65,7 @@ int	ft_printf(char const *input, ...)
 	va_list	args;
 	int		i;
 	int		n;
+	int		val;
 
 	va_start(args, input);
 	i = 0;
@@ -52,14 +74,17 @@ int	ft_printf(char const *input, ...)
 	{
 		if (input[i] == '%')
 		{
-			n += ft_handle_type(input[++i], &args);
+			if (input[i + 1] == '\0')
+				val = ft_putchar('%');
+			else
+				val = ft_handle_type(input[++i], &args);
 			i++;
-			continue ;
 		}
-		ft_putchar(input[i]);
-		n++;
-		i++;
+		else
+			val = ft_putchar(input[i++]);
+		if (val == -1)
+			return (ft_end_printf(&args, val));
+		n += val;
 	}
-	va_end(args);
-	return (n);
+	return (ft_end_printf(&args, n));
 }

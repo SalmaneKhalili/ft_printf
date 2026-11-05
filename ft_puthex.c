@@ -6,11 +6,18 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 11:05:48 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/01 14:28:51 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/05 16:27:31 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static char	*ft_get_base(int f)
+{
+	if (f)
+		return ("0123456789abcdef");
+	return ("0123456789ABCDEF");
+}
 
 int	ft_puthex(unsigned long n, int f)
 {
@@ -18,13 +25,11 @@ int	ft_puthex(unsigned long n, int f)
 	int		i;
 	int		arr[16];
 	int		count;
+	int		c;
 
 	if (n == 0)
 		return (ft_putchar('0'));
-	if (f)
-		str = "0123456789abcdef";
-	else
-		str = "0123456789ABCDEF";
+	str = ft_get_base(f);
 	i = 0;
 	while (n != 0)
 	{
@@ -35,7 +40,9 @@ int	ft_puthex(unsigned long n, int f)
 	count = i;
 	while (--i >= 0)
 	{
-		ft_putchar(arr[i]);
+		c = ft_putchar(arr[i]);
+		if (c == -1)
+			return (-1);
 	}
 	return (count);
 }
