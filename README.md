@@ -57,3 +57,5 @@ cc main.c libftprintf.a -o main
 ## Resources
 
 [The Application Binary Interface is what i used to figure out the mechanism behind variadic functions](https://refspecs.linuxfoundation.org/elf/x86_64-SysV-psABI.pdf)
+
+AI-Disclosure: AI has been used in this project for two main tasks, adding prototypes to my headerfile, and reviewing my 42 norm application.
