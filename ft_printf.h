@@ -6,7 +6,7 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 09:37:43 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/05 16:05:57 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/06 09:53:17 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
 int		ft_printf(const char *s, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
