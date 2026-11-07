@@ -6,7 +6,7 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 09:43:11 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/06 10:29:47 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/07 08:54:41 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	ft_put_invalid(char c)
 {
 	int	v;
 
-	v = ft_putchar('%');
+	v = ft_putchr('%');
 	if (v == -1)
 		return (-1);
-	v = ft_putchar(c);
+	v = ft_putchr(c);
 	if (v == -1)
 		return (-1);
 	return (2);
@@ -32,23 +32,23 @@ static int	ft_handle_type(char c, va_list *p)
 
 	count = 0;
 	if (c == 'c')
-		count = ft_putchar(va_arg(*p, int));
+		count = ft_putchr(va_arg(*p, int));
 	else if (c == 's')
-		count = ft_putstr(va_arg(*p, char *));
+		count = ft_putstri(va_arg(*p, char *));
 	else if (c == 'p')
 		count = ft_putptr(va_arg(*p, void *));
 	else if (c == 'd')
-		count = ft_putnbr(va_arg(*p, int));
+		count = ft_putnmbr(va_arg(*p, int));
 	else if (c == 'i')
-		count = ft_putnbr(va_arg(*p, int));
+		count = ft_putnmbr(va_arg(*p, int));
 	else if (c == 'u')
-		count = ft_putnbr(va_arg(*p, unsigned int));
+		count = ft_putnmbr(va_arg(*p, unsigned int));
 	else if (c == 'x')
 		count = ft_puthex(va_arg(*p, unsigned int), 1);
 	else if (c == 'X')
 		count = ft_puthex(va_arg(*p, unsigned int), 0);
 	else if (c == '%')
-		count = ft_putchar('%');
+		count = ft_putchr('%');
 	else
 		count = ft_put_invalid(c);
 	return (count);
@@ -81,7 +81,7 @@ int	ft_printf(char const *input, ...)
 			i++;
 		}
 		else
-			val = ft_putchar(input[i++]);
+			val = ft_putchr(input[i++]);
 		if (val == -1)
 			return (ft_end_printf(&args, val));
 		n += val;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 14:18:32 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/05 16:05:32 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/07 09:02:01 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static char	*ft_handle_zero(void)
 	return (str);
 }
 
-char	*ft_itoa(long n)
+char	*ft_ltoa(long n)
 {
-	long	nb;
-	size_t	count;
-	char	*str;
+	long long	nb;
+	size_t		count;
+	char		*str;
 
 	nb = n;
 	if (n == 0)

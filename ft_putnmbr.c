@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnmbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/01 10:19:17 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/05 16:21:15 by salkhali         ###   ########.fr       */
+/*   Created: 2026/11/01 14:07:02 by salkhali          #+#    #+#             */
+/*   Updated: 2026/11/07 09:04:40 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putnmbr(long nb)
 {
-	int	i;
-	int	c;
+	int		count;
+	char	*str;
+	int		c;
 
+	count = 0;
+	str = ft_ltoa(nb);
 	if (!str)
-		str = "(null)";
-	i = 0;
-	while (str[i])
+		return (-1);
+	c = ft_putstri(str);
+	if (c == -1)
 	{
-		c = ft_putchar(str[i++]);
-		if (c == -1)
-			return (c);
+		free(str);
+		return (c);
 	}
-	return (i);
+	count += c;
+	free(str);
+	return (count);
 }

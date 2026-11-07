@@ -2,7 +2,7 @@ NAME = libftprintf.a
 CC = cc
 INCLUDE = ft_printf.h
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_itoa.c ft_printf.c ft_putchar.c ft_puthex.c ft_putnbr.c ft_putptr.c ft_putstr.c
+SRC = ft_ltoa.c ft_printf.c ft_putchr.c ft_puthex.c ft_putnmbr.c ft_putptr.c ft_putstri.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
@@ -22,3 +22,4 @@ fclean: clean
 re: fclean all 
 
 .PHONY: re all clean fclean
+.SECONDARY: $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 11:05:48 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/05 16:27:31 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/07 08:58:34 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_puthex(unsigned long n, int f)
 	int		c;
 
 	if (n == 0)
-		return (ft_putchar('0'));
+		return (ft_putchr('0'));
 	str = ft_get_base(f);
 	i = 0;
 	while (n != 0)
@@ -40,7 +40,7 @@ int	ft_puthex(unsigned long n, int f)
 	count = i;
 	while (--i >= 0)
 	{
-		c = ft_putchar(arr[i]);
+		c = ft_putchr(arr[i]);
 		if (c == -1)
 			return (-1);
 	}
