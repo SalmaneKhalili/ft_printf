@@ -48,7 +48,7 @@ make re
 ###  Compilation
 To compile a C file with the library, make sure to include the header file within the source code that calls it.
 ```c
-#include "libft.h"
+#include "libftprintf.h"
 ```
 as for the compilation itself, you can simply pass the library name to your compiler of choice as an argument.
 ```bash

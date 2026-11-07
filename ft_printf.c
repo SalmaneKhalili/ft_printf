@@ -6,7 +6,7 @@
 /*   By: salkhali <salkhali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/01 09:43:11 by salkhali          #+#    #+#             */
-/*   Updated: 2026/11/07 08:54:41 by salkhali         ###   ########.fr       */
+/*   Updated: 2026/11/07 09:10:43 by salkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_printf(char const *input, ...)
 		if (input[i] == '%')
 		{
 			if (input[i + 1] == '\0')
-				val = 0;
+				return (ft_end_printf(&args, -1));
 			else
 				val = ft_handle_type(input[++i], &args);
 			i++;
